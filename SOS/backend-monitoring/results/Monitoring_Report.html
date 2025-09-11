@@ -1,0 +1,275 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Backend Architecture Comparison</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 20px;
+          line-height: 1.6;
+        }
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+        header {
+          text-align: center;
+          margin-bottom: 30px;
+        }
+        h1 {
+          color: #333;
+        }
+        .metrics {
+          display: flex;
+          justify-content: space-around;
+          margin-bottom: 30px;
+        }
+        .metric-card {
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          padding: 20px;
+          width: 30%;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .metric-title {
+          font-size: 20px;
+          font-weight: bold;
+          margin-bottom: 15px;
+          text-align: center;
+        }
+        .comparison {
+          background-color: #f9f9f9;
+          border-radius: 8px;
+          padding: 20px;
+          margin-bottom: 30px;
+        }
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-bottom: 20px;
+        }
+        th, td {
+          border: 1px solid #ddd;
+          padding: 8px;
+          text-align: left;
+        }
+        th {
+          background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+          background-color: #f9f9f9;
+        }
+        .status-success {
+          color: green;
+          font-weight: bold;
+        }
+        .status-warning {
+          color: orange;
+          font-weight: bold;
+        }
+        .status-error {
+          color: red;
+          font-weight: bold;
+        }
+        /* Added styles for the button */
+        .run-test-btn {
+          display: block;
+          width: 200px;
+          margin: 20px auto;
+          padding: 10px;
+          background-color: #4CAF50;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          font-size: 16px;
+          cursor: pointer;
+          text-align: center;
+          text-decoration: none;
+        }
+        .run-test-btn:hover {
+          background-color: #45a049;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <header>
+          <h1>Backend Architecture Comparison</h1>
+          <p>Monolithic vs. Microservices Performance</p>
+          <p><strong>Test Date:</strong> 4/17/2025, 3:25:13 AM</p>
+        </header>
+
+        <div class="metrics">
+          <div class="metric-card">
+            <div class="metric-title">Throughput</div>
+            <p><strong>Monolithic:</strong> 77.90 req/sec</p>
+            <p><strong>Microservices:</strong> 68.90 req/sec</p>
+            <p>
+              <strong>Difference:</strong> 
+              11.55% 
+              higher in Monolithic
+            </p>
+          </div>
+          
+          <div class="metric-card">
+            <div class="metric-title">Latency</div>
+            <p><strong>Monolithic:</strong> 1450.82 ms</p>
+            <p><strong>Microservices:</strong> 3085.22 ms</p>
+            <p>
+              <strong>Difference:</strong> 
+              112.65% 
+              lower in Monolithic
+            </p>
+          </div>
+          
+          <div class="metric-card">
+            <div class="metric-title">Cold Start Time</div>
+            <p><strong>Monolithic:</strong> 70 ms</p>
+            <p><strong>Microservices:</strong> 26 ms</p>
+            <p>
+              <strong>Difference:</strong> 
+              62.86% 
+                faster in Microservices
+            </p>
+          </div>
+        </div>
+        
+        <div class="comparison">
+          <h2>Detailed Results</h2>
+          <h3>Throughput (requests/sec)</h3>
+          <table>
+            <tr>
+              <th>Endpoint</th>
+              <th>Monolithic</th>
+              <th>Microservices</th>
+              <th>Difference</th>
+            </tr>
+            
+                <tr>
+                  <td>Notes - Get All</td>
+                  <td>112.10</td>
+                  <td>98.20</td>
+                  <td>-12.40%</td>
+                </tr>
+              
+                <tr>
+                  <td>Events - Get All</td>
+                  <td>43.70</td>
+                  <td>39.60</td>
+                  <td>-9.38%</td>
+                </tr>
+              
+          </table>
+          
+          <h3>Latency (ms)</h3>
+          <table>
+            <tr>
+              <th>Endpoint</th>
+              <th>Monolithic</th>
+              <th>Microservices</th>
+              <th>Difference</th>
+            </tr>
+            
+                <tr>
+                  <td>Notes - Get All</td>
+                  <td>883.05</td>
+                  <td>2872.60</td>
+                  <td>+225.30%</td>
+                </tr>
+              
+                <tr>
+                  <td>Events - Get All</td>
+                  <td>2018.60</td>
+                  <td>3297.83</td>
+                  <td>+63.37%</td>
+                </tr>
+              
+          </table>
+          
+          <h3>HTTP Status Codes</h3>
+          <table>
+            <tr>
+              <th>Endpoint</th>
+              <th>Monolithic Status</th>
+              <th>Microservices Status</th>
+            </tr>
+            
+                <tr>
+                  <td>Notes - Get All</td>
+                  <td><span class="status-success">200: [object Object]</span></td>
+                  <td><span class="status-success">200: [object Object]</span></td>
+                </tr>
+              
+                <tr>
+                  <td>Events - Get All</td>
+                  <td><span class="status-success">200: [object Object]</span></td>
+                  <td><span class="status-success">200: [object Object]</span></td>
+                </tr>
+              
+          </table>
+          
+          <h3>Error Count</h3>
+          <table>
+            <tr>
+              <th>Endpoint</th>
+              <th>Monolithic</th>
+              <th>Microservices</th>
+            </tr>
+            
+                <tr>
+                  <td>Notes - Get All</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+              
+                <tr>
+                  <td>Events - Get All</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+              
+          </table>
+        </div>
+        
+        <div class="comparison">
+          <h2>Architecture Trade-offs</h2>
+          
+          <h3>Monolithic Architecture</h3>
+          <p><strong>Advantages:</strong></p>
+          <ul>
+            <li><strong>Lower Latency:</strong> Typically better response times due to fewer network hops</li>
+            <li><strong>Simplicity:</strong> Easier to develop, test, and deploy as a single unit</li>
+            <li><strong>Data Consistency:</strong> Easier to maintain transactional integrity</li>
+            <li><strong>Resource Efficiency:</strong> Generally requires fewer resources</li>
+          </ul>
+          
+          <p><strong>Disadvantages:</strong></p>
+          <ul>
+            <li><strong>Scalability Challenges:</strong> Must scale the entire application</li>
+            <li><strong>Technology Lock-in:</strong> Difficult to use different technologies for different components</li>
+            <li><strong>Deployment Risk:</strong> Changes require redeploying the entire application</li>
+          </ul>
+          
+          <h3>Microservices Architecture</h3>
+          <p><strong>Advantages:</strong></p>
+          <ul>
+            <li><strong>Independent Scalability:</strong> Each service can be scaled based on demand</li>
+            <li><strong>Technology Flexibility:</strong> Different services can use different technologies</li>
+            <li><strong>Resilience:</strong> Failures are isolated to individual services</li>
+            <li><strong>Team Autonomy:</strong> Teams can work independently on different services</li>
+          </ul>
+          
+          <p><strong>Disadvantages:</strong></p>
+          <ul>
+            <li><strong>Increased Latency:</strong> Network calls between services add latency</li>
+            <li><strong>Operational Complexity:</strong> More moving parts to monitor and maintain</li>
+            <li><strong>Distributed Transactions:</strong> Ensuring data consistency is challenging</li>
+            <li><strong>Higher Resource Requirements:</strong> Each service has its own runtime overhead</li>
+          </ul>
+        </div>
+      </div>
+    </body>
+    </html>
+  

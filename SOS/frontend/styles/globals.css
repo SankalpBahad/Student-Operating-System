@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 224 71.4% 4.1%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+ 
+    --primary: 220.9 39.3% 11%;
+    --primary-foreground: 210 20% 98%;
+ 
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+ 
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+ 
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
+ 
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 224 71.4% 4.1%;
+ 
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+ 
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
+ 
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+ 
+    --primary: 210 20% 98%;
+    --primary-foreground: 220.9 39.3% 11%;
+ 
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+ 
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+ 
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+ 
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 216 12.2% 83.9%;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom React Calendar Styling */
+.react-calendar-custom {
+  @apply border-none rounded-lg shadow-md dark:bg-gray-800 dark:text-gray-100;
+}
+
+.react-calendar-custom .react-calendar__navigation button {
+  @apply text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-gray-700 rounded;
+  min-width: 44px; /* Ensure buttons are easy targets */
+}
+.react-calendar-custom .react-calendar__navigation button:disabled {
+  @apply bg-transparent text-gray-400 dark:text-gray-600 cursor-not-allowed;
+}
+
+.react-calendar-custom .react-calendar__month-view__weekdays__weekday {
+  @apply font-semibold text-sm text-gray-600 dark:text-gray-400 uppercase;
+   text-align: center; /* Ensure text alignment */
+   padding-bottom: 0.5em; /* Add space below weekday names */
+}
+.react-calendar-custom .react-calendar__month-view__weekdays__weekday abbr {
+  @apply no-underline; /* Remove underline from abbreviations */
+}
+
+
+.react-calendar-custom .react-calendar__tile {
+  @apply text-center p-2 hover:bg-blue-100 dark:hover:bg-gray-700 rounded transition-colors duration-150;
+  max-width: 100%; /* Ensure tiles fit */
+  height: 50px; /* Adjust height as needed */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Align content to top */
+  position: relative; /* Needed for absolute positioning of dot */
+}
+
+.react-calendar-custom .react-calendar__tile--now {
+  @apply bg-blue-100 dark:bg-gray-700 font-bold;
+}
+.react-calendar-custom .react-calendar__tile--now:hover {
+   @apply bg-blue-200 dark:bg-gray-600;
+}
+
+.react-calendar-custom .react-calendar__tile--active {
+  @apply bg-blue-500 text-white font-bold;
+}
+.react-calendar-custom .react-calendar__tile--active:hover {
+   @apply bg-blue-600;
+}
+.react-calendar-custom .react-calendar__tile--active .event-dot { /* Hide dot on active tile if desired */
+  display: none;
+}
+
+
+.react-calendar-custom .react-calendar__tile:disabled {
+  @apply text-gray-400 dark:text-gray-600 bg-transparent cursor-not-allowed;
+}
+.react-calendar-custom .react-calendar__tile--neighboringMonth {
+  @apply text-gray-400 dark:text-gray-500; /* Dim tiles from other months */
+}
+
+
+/* Style for the event indicator dot */
+.react-calendar-custom .react-calendar__tile .flex.justify-center.items-center {
+ position: absolute;
+ bottom: 5px; /* Position dot at the bottom */
+ left: 0;
+ right: 0;
+ /* height: 6px; /* Optional: If using a div wrapper for the dot */
+}
+
+
+/* Ensure scrollbar is hidden if specified elsewhere */
+.hide-scrollbar::-webkit-scrollbar {
+display: none; /* For Chrome, Safari, and Opera */
+}
+.hide-scrollbar {
+-ms-overflow-style: none; /* For Internet Explorer and Edge */
+scrollbar-width: none; /* For Firefox */
+}
+
+
